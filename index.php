@@ -3,7 +3,7 @@
 require_once( 'controller/homeController.php' );
 require_once( 'controller/loginController.php' );
 require_once( 'controller/signupController.php' );
-require_once( 'controller/mediaController.php' );
+require_once('controller/mediaController.php');
 
 /**************************
 * ----- HANDLE ACTION -----
@@ -33,6 +33,24 @@ if ( isset( $_GET['action'] ) ):
     break;
 
   endswitch;
+
+elseif ( isset( $_GET['media'] ) ):
+
+    switch( $_GET['media']):
+
+        case 2:
+
+            mediaSummary();
+
+        break;
+
+        default:
+
+            mediaPage();
+
+        break;
+
+    endswitch;
 
 else:
 
