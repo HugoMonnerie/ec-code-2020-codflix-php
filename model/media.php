@@ -93,8 +93,17 @@ class Media {
     // Open database connection
     $db   = init_db();
 
-    $req  = $db->prepare( "SELECT * FROM media ORDER BY release_date DESC");
-    $req->execute( array( '%' . $title . '%' ));
+    if($title==null):
+
+        $req  = $db->prepare( "SELECT * FROM media ORDER BY release_date DESC");
+        $req->execute( array( '%' . $title . '%' ));
+
+    else:
+
+        $req  = $db->prepare( "SELECT * FROM media WHERE title LIKE :title ORDER BY release_date DESC");
+        $req->execute( array(':title' => '%' . $title . '%' ));
+
+    endif;
 
     // Close databse connection
     $db   = null;
