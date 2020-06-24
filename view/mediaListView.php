@@ -23,7 +23,22 @@
                 </div>
             </div>
             <div class="title"><?= $media['title']; ?></div>
-            <div class="release">Date de sortie : <?= $media['release_date']; ?></div>
+            <?php
+            /*
+             * display the date in letter
+             */
+            $date=$media['release_date'];
+
+            list($year, $month, $day) = explode("-", $date);
+
+            $date_release = "$day/$month/$year";
+
+            $months = array("janvier", "février", "mars", "avril", "mai", "juin",
+                "juillet", "août", "septembre", "octobre", "novembre", "décembre");
+
+            $date_release = "le $day ".$months[$month-1]." $year";
+            ?>
+            <div class="release">Date de sortie : <?= $date_release; ?></div>
         </a>
 
     <?php endforeach; ?>
