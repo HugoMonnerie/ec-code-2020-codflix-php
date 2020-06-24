@@ -27,7 +27,7 @@ function signup( $post ) {
 
     try {
         (new User)->createUser();
-        $msg_success="Utilisateur créé";
+        $success_msg="Utilisateur créé";
     } catch (Exception $e) {
         $error_msg  = $e;
     }

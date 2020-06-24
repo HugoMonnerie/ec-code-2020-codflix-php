@@ -71,9 +71,12 @@ class User {
 
     // Check if email already exist
     $req  = $db->prepare( "SELECT * FROM user WHERE email = ?" );
-    $req->execute( array( $this->getEmail() ) );
+    $req->execute( array( $_POST['email'] ) );
 
-    if( $req->rowCount() > 0 ) throw new Exception( "Email ou mot de passe incorrect" );
+    if( $req->rowCount() > 0 ) throw new Exception( "Email déjà utilisé." );
+
+    // Check if password and confirm password it are the same
+    if($_POST['password'] != $_POST['password_confirm']) throw new Exception( "Vous n'avez pas utilisé le même mot de passe." );
 
     // Insert new user
     $req->closeCursor();
@@ -81,7 +84,7 @@ class User {
     $req  = $db->prepare( "INSERT INTO user ( email, password ) VALUES ( :email, :password )" );
     $req->execute( array(
       ':email'     => $_POST['email'],
-      ':password'  => $_POST['password']
+      ':password'  => hash ( 'sha256' , $_POST['password'] )
     ));
 
     // Close databse connection

@@ -40,7 +40,7 @@
               <?= isset( $error_msg ) ? $error_msg : null; ?>
             </span>
             <span class="success-msg">
-              <?= isset( $msg_success ) ? $msg_success : null; ?>
+              <?= isset( $success_msg ) ? $success_msg : null; ?>
             </span>
           </form>
         </div>
