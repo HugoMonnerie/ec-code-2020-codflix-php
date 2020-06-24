@@ -22,3 +22,15 @@ function signupPage() {
 /***************************
 * ----- SIGNUP FUNCTION -----
 ***************************/
+
+function signup( $post ) {
+
+    try {
+        (new User)->createUser();
+        $msg_success="Utilisateur créé";
+    } catch (Exception $e) {
+        $error_msg  = $e;
+    }
+
+    require('view/auth/signupView.php');
+}
