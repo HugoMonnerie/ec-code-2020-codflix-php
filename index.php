@@ -37,14 +37,19 @@ if ( isset( $_GET['action'] ) ):
 elseif ( isset( $_GET['media'] ) ):
 
     if ( !empty( $_GET['media'] ) ) mediaSummary($_GET['media']);
-    else mediaPage();
+    else mediaPage(null);
+
+elseif ( isset( $_GET['title'] ) ):
+
+    if ( !empty( $_GET['title'] ) ) mediaPage($_GET['title']);
+    else mediaPage(null);
 
 else:
 
   $user_id = isset( $_SESSION['user_id'] ) ? $_SESSION['user_id'] : false;
 
   if( $user_id ):
-    mediaPage();
+    mediaPage(null);
   else:
     homePage();
   endif;

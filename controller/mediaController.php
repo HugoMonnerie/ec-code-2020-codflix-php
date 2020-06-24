@@ -6,10 +6,9 @@ require_once( 'model/media.php' );
 * ----- LOAD HOME PAGE -----
 ***************************/
 
-function mediaPage() {
+function mediaPage( $get ) {
 
-  $search = isset( $_GET['title'] ) ? $_GET['title'] : null;
-  $medias = Media::filterMedias( $search );
+  $medias = Media::filterMedias( $get );
 
   require('view/mediaListView.php');
 
