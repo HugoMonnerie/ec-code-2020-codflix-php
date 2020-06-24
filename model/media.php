@@ -126,4 +126,20 @@ class Media {
         return $req->fetch();
 
     }
+
+
+    public static function searchGenre( $id_media ) {
+
+        // Open database connection
+        $db   = init_db();
+
+        $req  = $db->prepare( "SELECT * FROM media LEFT JOIN genre ON (media.genre_id = genre.id) WHERE media.id = ?" );
+        $req->execute( array( $id_media ));
+
+        // Close databse connection
+        $db   = null;
+
+        return $req->fetch();
+
+    }
 }

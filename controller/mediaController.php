@@ -17,7 +17,8 @@ function mediaPage( $get ) {
 function mediaSummary( $get ) {
 
     $media = Media::selectMedia( $get );
+    $genre = Media::searchGenre( $get );
 
-    require('view/mediaSummary.php');
+    require('view/mediaDetails.php');
 
 }

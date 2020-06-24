@@ -1,5 +1,11 @@
 <?php ob_start(); ?>
 
+    <div class="title">
+
+        <h2><?= $media['title']; ?></h2>
+
+    </div>
+
     <div class="trailer">
 
         <iframe allowfullscreen="" frameborder="0" src="<?= $media['trailer_url']; ?>" ></iframe>
@@ -24,7 +30,7 @@
         $date_release = "le $day ".$months[$month-1]." $year";
         ?>
 
-        <p>Date de sortie : <?= $date_release; ?></p>
+        <p>Date de sortie : <?= $date_release; ?></p><p>Genre : <?= $genre['name']; ?></p>
 
     </div>
 
