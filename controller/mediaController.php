@@ -15,10 +15,9 @@ function mediaPage() {
 
 }
 
-function mediaSummary() {
+function mediaSummary( $get ) {
 
-    $media_id = isset( $_GET['id'] ) ? $_GET['id'] : null;
-    $media = Media::filterMedia( $media_id );
+    $media = Media::selectMedia( $get );
 
     require('view/mediaSummary.php');
 

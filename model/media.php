@@ -93,7 +93,7 @@ class Media {
     // Open database connection
     $db   = init_db();
 
-    $req  = $db->prepare( "SELECT * FROM media ORDER BY release_date DESC" );
+    $req  = $db->prepare( "SELECT * FROM media ORDER BY release_date DESC");
     $req->execute( array( '%' . $title . '%' ));
 
     // Close databse connection
@@ -103,17 +103,18 @@ class Media {
 
   }
 
-    public static function filterMedia($id) {
+    public static function selectMedia( $id ) {
 
         // Open database connection
         $db   = init_db();
 
-        $req  = $db->prepare( "SELECT * FROM media WHERE media.id=".$id );
+        $req  = $db->prepare( "SELECT * FROM media WHERE id = ?" );
+        $req->execute( array( $id ));
 
         // Close databse connection
         $db   = null;
 
-        return $req;
+        return $req->fetch();
 
     }
 }

@@ -1,6 +1,5 @@
 <?php ob_start(); ?>
 
-<?php //foreach( $media as $media1 ): ?>
     <div class="trailer">
 
         <iframe allowfullscreen="" frameborder="0" src="<?= $media['trailer_url']; ?>" ></iframe>
@@ -9,7 +8,23 @@
 
     <div class="release-date">
 
-        <p>Date de sortie : <?= $media['release_date']; ?></p>
+        <?php
+        /*
+         * display the date in letter
+         */
+        $date=$media['release_date'];
+
+        list($year, $month, $day) = explode("-", $date);
+
+        $date_release = "$day/$month/$year";
+
+        $months = array("janvier", "février", "mars", "avril", "mai", "juin",
+            "juillet", "août", "septembre", "octobre", "novembre", "décembre");
+
+        $date_release = "le $day ".$months[$month-1]." $year";
+        ?>
+
+        <p>Date de sortie : <?= $date_release; ?></p>
 
     </div>
 
@@ -18,8 +33,6 @@
         <p><?= $media['summary']; ?></p>
 
     </div>
-<?php// endforeach; ?>
-
 
 <?php $content = ob_get_clean(); ?>
 

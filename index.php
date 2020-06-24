@@ -36,21 +36,8 @@ if ( isset( $_GET['action'] ) ):
 
 elseif ( isset( $_GET['media'] ) ):
 
-    switch( $_GET['media']):
-
-        case 2:
-
-            mediaSummary();
-
-        break;
-
-        default:
-
-            mediaPage();
-
-        break;
-
-    endswitch;
+    if ( !empty( $_GET['media'] ) ) mediaSummary($_GET['media']);
+    else mediaPage();
 
 else:
 
