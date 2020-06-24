@@ -80,8 +80,8 @@ class User {
 
     $req  = $db->prepare( "INSERT INTO user ( email, password ) VALUES ( :email, :password )" );
     $req->execute( array(
-      'email'     => $this->getEmail(),
-      'password'  => $this->getPassword()
+      ':email'     => $_POST['email'],
+      ':password'  => $_POST['password']
     ));
 
     // Close databse connection
