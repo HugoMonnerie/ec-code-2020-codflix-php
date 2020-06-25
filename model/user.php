@@ -92,9 +92,12 @@ class User {
 
   }
 
-  /**************************************
-  * -------- GET USER DATA BY ID --------
-  ***************************************/
+    /**************************************
+     * -------- GET USER DATA BY ID --------
+     **************************************
+     * @param $id int id user
+     * @return mixed
+     */
 
   public static function getUserById( $id ) {
 

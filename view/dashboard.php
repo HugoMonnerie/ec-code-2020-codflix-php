@@ -18,9 +18,10 @@
         <h2 class="title">Bienvenue</h2>
         <div class="sidebar-menu">
           <ul>
-            <li class="active"><a href="index.php?media">Médias</a></li>
-            <li><a href="index.php?contact">Nous contacter</a></li>
-            <li><a href="index.php?action=logout">Me déconnecter</a></li>
+            <li class=""><a href="index.php?media">Médias</a></li>
+              <li class=""><a href="index.php?history">Historique</a></li>
+              <li class=""><a href="index.php?contact">Nous contacter</a></li>
+            <li class=""><a href="index.php?action=logout">Me déconnecter</a></li>
           </ul>
         </div>
       </nav>

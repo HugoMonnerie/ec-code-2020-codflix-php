@@ -33,9 +33,9 @@
 
     list($hour, $minute, $second) = explode(":", $time);
 
-    $totalTime = "$hour H $minute Min $second Sec ";
+    $seriesTime = "$hour H $minute Min $second Sec ";
     ?>
-    <p>Durée total : <?= $totalTime; ?></p>
+    <p>Durée total : <?= $seriesTime; ?></p>
 
     <p>Genre : <?= $genre['name']; ?></p>
 
@@ -51,7 +51,7 @@
 <div class="media-list">
     <?php foreach( $streamsS1 as $stream ): ?>
 
-        <a class="item">
+        <a class="item" href="index.php?stream=<?= $stream['id']; ?>">
             <div class="video">
                 <div>
                     <iframe src="<?= $stream['video_url']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -67,7 +67,7 @@
 <div class="media-list">
     <?php foreach( $streamsS2 as $stream ): ?>
 
-        <a class="item">
+        <a class="item" href="index.php?stream=<?= $stream['id']; ?>">
             <div class="video">
                 <div>
                     <iframe src="<?= $stream['video_url']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
