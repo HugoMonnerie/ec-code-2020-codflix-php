@@ -22,8 +22,10 @@ function loginPage() {
 }
 
 /***************************
-* ----- LOGIN FUNCTION -----
-***************************/
+ * ----- LOGIN FUNCTION -----
+ **************************
+ * @param $post array mail and password
+ */
 
 function login( $post ) {
 

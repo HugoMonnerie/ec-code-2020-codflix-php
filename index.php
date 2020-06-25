@@ -22,7 +22,7 @@ if ( isset( $_GET['action'] ) ):
 
     case 'signup':
 
-        if ( !empty( $_POST ) ) signup( $_POST );
+        if ( !empty( $_POST ) ) signup();
         else signupPage();
 
     break;
@@ -41,14 +41,14 @@ elseif ( isset( $_GET['media'] ) && isset( $_GET['type'] ) ):
 
         case 'film':
 
-            if ( !empty( $_GET['media'] ) ) mediaSummary( $_GET['media'] );
+            if ( !empty( $_GET['media'] ) ) mediaMovie( $_GET['media'] );
             else mediaPage(null);
 
         break;
 
         case 'serie':
 
-            if ( !empty( $_GET['media'] ) ) mediaSerie( $_GET['media'], $_GET['type'] );
+            if ( !empty( $_GET['media'] ) ) mediaSerie( $_GET['media'] );
             else mediaPage(null);
 
         break;
@@ -62,6 +62,10 @@ elseif ( isset( $_GET['title'] ) ):
 elseif ( isset( $_GET['history'] ) ):
 
     historyPage( $_SESSION['user_id'], $_GET['history.id'] );
+
+elseif ( isset( $_GET['contact'] ) ):
+
+    contactPage();
 
 else:
 

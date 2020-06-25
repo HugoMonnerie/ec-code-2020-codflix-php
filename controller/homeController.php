@@ -21,6 +21,13 @@ function homePage() {
 
 }
 
+/****************************
+ * ---- LOAD HISTORY PAGE ---
+ ***************************
+ * @param $getIdUser int id user
+ * @param $getIdHistory int id history
+ */
+
 function historyPage( $getIdUser, $getIdHistory ) {
 
     $history = Media::selectHistory( $getIdUser );
@@ -30,3 +37,15 @@ function historyPage( $getIdUser, $getIdHistory ) {
     require('view/historyView.php');
 
 }
+
+/****************************
+ * --- LOAD CONTACT PAGE ---
+ ****************************/
+
+function contactPage( ) {
+
+    require('view/contactView.php');
+
+}
+
+

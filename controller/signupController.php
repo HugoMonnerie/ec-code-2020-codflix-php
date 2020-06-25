@@ -3,7 +3,7 @@
 require_once( 'model/user.php' );
 
 /****************************
-* ----- LOAD SIGNUP PAGE -----
+* ----- LOAD SIGNUP PAGE ----
 ****************************/
 
 function signupPage() {
@@ -20,10 +20,10 @@ function signupPage() {
 }
 
 /***************************
-* ----- SIGNUP FUNCTION -----
-***************************/
+ * ----- SIGNUP FUNCTION ----
+ **************************/
 
-function signup( $post ) {
+function signup() {
 
     try {
         (new User)->createUser();
