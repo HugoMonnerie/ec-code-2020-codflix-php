@@ -190,4 +190,51 @@ class Media {
         return $req->fetchAll();
 
     }
+
+    public static function selectHistory( $id_user ) {
+
+        // Open database connection
+        $db   = init_db();
+
+        $req  = $db->prepare( "SELECT * FROM media LEFT JOIN history ON ( history.media_id = media.id ) WHERE history.user_id LIKE :user_id ORDER BY history.start_date DESC" );
+        $req->execute( array ( ':user_id' => $id_user ));
+
+        // Close databse connection
+        $db   = null;
+
+        return $req->fetchAll();
+
+    }
+
+    public static function deleteOneHistory( $id_history ) {
+
+        // Open database connection
+        $db   = init_db();
+
+        $req  = $db->prepare( "DELETE FROM history WHERE history.id LIKE :history_id" );
+        $req->execute( array ( ':history_id' => $id_history ));
+
+        // Close databse connection
+        $db   = null;
+
+        return $req->fetchAll();
+
+    }
+
+    public static function deleteAllHistory( $id_user ) {
+
+        // Open database connection
+        $db   = init_db();
+
+        $req  = $db->prepare( "DELETE FROM history WHERE history.user_id LIKE :user_id" );
+        $req->execute( array ( ':user_id' => $id_user ));
+
+        // Close databse connection
+        $db   = null;
+
+        return $req->fetchAll();
+
+    }
+
+
 }

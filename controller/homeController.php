@@ -14,9 +14,19 @@ function homePage() {
 
     $user_data  = User::getUserById( $user_id );
 
-    require('view/dashboardView.php');
+    require('view/dashboard.php');
   else:
     require('view/homeView.php');
   endif;
+
+}
+
+function historyPage( $getIdUser, $getIdHistory ) {
+
+    $history = Media::selectHistory( $getIdUser );
+    //$delOneHistory = Media::deleteOneHistory($getIdHistory);
+    //$delAllHistory = Media::deleteAllHistory($getIdUser);
+
+    require('view/historyView.php');
 
 }

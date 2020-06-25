@@ -8,7 +8,11 @@
 
     <div class="trailer">
 
-        <iframe src="<?= $media['trailer_url']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="d-flex flex-column">
+            <div class="p-2">
+                <iframe src="<?= $media['trailer_url']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
 
     </div>
 
@@ -30,7 +34,8 @@
         $date_release = "le $day ".$months[$month-1]." $year";
         ?>
 
-        <p>Date de sortie : <?= $date_release; ?></p><p>Genre : <?= $genre['name']; ?></p>
+        <p>Date de sortie : <?= $date_release; ?></p>
+        <p>Genre : <?= $genre['name']; ?></p>
 
     </div>
 
