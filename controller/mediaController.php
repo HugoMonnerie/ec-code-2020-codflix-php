@@ -32,7 +32,7 @@ function mediaMovie($getMediaId ) {
 }
 
 /*************************************
- * ----- LOAD MEDIA(MOVIE) PAGE -----
+ * ----- LOAD MEDIA(SERIES) PAGE -----
  ************************************
  * @param $getMediaId int id media
  */
@@ -46,6 +46,20 @@ function mediaSerie( $getMediaId ) {
     $totalTime = Media::durationSeries( $getMediaId );
 
     require('view/mediaStream.php');
+
+}
+
+/*************************************
+ * ----- LOAD STREAM PAGE -----
+ ************************************
+ * @param $getStreamId int id stream
+ */
+
+function streamPage( $getStreamId ) {
+
+    $stream   = Media::selectStream( $getStreamId );
+
+    require('view/streamView.php');
 
 }
 

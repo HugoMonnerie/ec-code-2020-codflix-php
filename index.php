@@ -61,7 +61,11 @@ elseif ( isset( $_GET['title'] ) ):
 
 elseif ( isset( $_GET['history'] ) ):
 
-    historyPage( $_SESSION['user_id'], $_GET['history.id'] );
+    historyPage( $_SESSION['user_id'] );
+
+elseif ( isset( $_GET['stream'] ) ):
+
+    streamPage( $_GET['stream'] );
 
 elseif ( isset( $_GET['contact'] ) ):
 

@@ -5,30 +5,29 @@
     </div>
     <div class="d-flex flex-row-reverse">
         <div class="p-2">
-            <button type="submit" class="btn bg-red text-light">Supprimer mon historique</button>
+            <form method="post" action="index.php?del=allHistorique">
+                <button type="submit" class="btn bg-red text-light">Supprimer mon historique</button>
+            </form>
         </div>
     </div>
 
-
-
     <div class="media-list">
         <?php foreach( $history as $media ): ?>
-        <a class="item" href="index.php?media=<?= $media[0]; ?>&type=<?= $media['type']; ?>">
-            <div class="video">
-                <div>
-                    <iframe src="<?= $media['trailer_url']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <a class="item" href="index.php?media=<?= $media[0]; ?>&type=<?= $media['type']; ?>">
+                <div class="video">
+                    <div>
+                        <iframe src="<?= $media['trailer_url']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
-            </div>
-            <div class="title"><?= $media['title']; ?></div>
-            <div class="d-flex justify-content-center">
-                <div class="p-2">
-                    <button id="<?= $media['id']; ?>" type="submit" class="btn bg-red text-light">Supprimer l'élément</button>
+                <div class="title"><?= $media['title']; ?></div>
+                <div class="d-flex justify-content-center">
+                    <div class="p-2">
+                        <form method="post" action="index.php?del=oneMedia">
+                            <button type="submit" class="btn bg-red text-light">Supprimer l'élément</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </a>
-
-
-
+            </a>
         <?php endforeach; ?>
     </div>
 

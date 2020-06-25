@@ -25,14 +25,35 @@ function homePage() {
  * ---- LOAD HISTORY PAGE ---
  ***************************
  * @param $getIdUser int id user
- * @param $getIdHistory int id history
  */
 
-function historyPage( $getIdUser, $getIdHistory ) {
+function historyPage( $getIdUser ) {
 
     $history = Media::selectHistory( $getIdUser );
-    //$delOneHistory = Media::deleteOneHistory($getIdHistory);
-    //$delAllHistory = Media::deleteAllHistory($getIdUser);
+
+    if ( isset( $_GET['del'] ) ):
+
+        historyPage( $_SESSION['user_id'] );
+
+        switch( $_GET['del']):
+
+            case 'allHistorique':
+
+                if ( !empty( $_POST ) ) Media::deleteAllHistory( $_SESSION['user_id'] );
+                else historyPage( $_SESSION['user_id'] );
+
+                break;
+
+            /*case 'oneMedia':
+
+                if ( !empty( $_POST ) ) Media::deleteMediaHistory();
+                else historyPage( $_SESSION['user_id'] );
+
+                break;*/
+
+        endswitch;
+
+    endif;
 
     require('view/historyView.php');
 

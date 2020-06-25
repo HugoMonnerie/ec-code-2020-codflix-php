@@ -137,6 +137,28 @@ class Media {
 
     }
 
+    /********************************
+     * --- SELECT STREAM WITH ID -----
+     *******************************
+     * @param $id int stream id
+     * @return mixed the media
+     */
+
+    public static function selectStream( $id ) {
+
+        // Open database connection
+        $db   = init_db();
+
+        $req  = $db->prepare( "SELECT * FROM stream WHERE id = ?" );
+        $req->execute( array( $id ));
+
+        // Close databse connection
+        $db   = null;
+
+        return $req->fetch();
+
+    }
+
     /**************************************
      * --- SELECT GENRE WITH MEDIA ID -----
      *************************************
@@ -221,7 +243,7 @@ class Media {
         // Close databse connection
         $db   = null;
 
-        return $req->fetchAll();
+        return $req->fetch();
 
     }
 
@@ -254,7 +276,7 @@ class Media {
      * @return array
      */
 
-    public static function deleteOneHistory( $id_history ) {
+    public static function deleteMediaHistory( $id_history ) {
 
         // Open database connection
         $db   = init_db();
