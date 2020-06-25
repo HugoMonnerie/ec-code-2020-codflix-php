@@ -127,7 +127,6 @@ class Media {
 
     }
 
-
     public static function searchGenre( $id_media ) {
 
         // Open database connection
@@ -140,6 +139,55 @@ class Media {
         $db   = null;
 
         return $req->fetch();
+
+    }
+
+    public static function selectSeriesS1($id_media ) {
+
+        // Open database connection
+        $db   = init_db();
+
+        $req  = $db->prepare( "SELECT * FROM stream WHERE media_id LIKE :media_id AND season LIKE 1" );
+        $req->execute( array( ':media_id' => $id_media ));
+
+        // Close databse connection
+        $db   = null;
+
+        return $req->fetchAll();
+
+    }
+
+    public static function selectSeriesS2($id_media ) {
+
+        // Open database connection
+        $db   = init_db();
+
+        $req  = $db->prepare( "SELECT * FROM stream WHERE media_id LIKE :media_id AND season LIKE 2" );
+        $req->execute( array( ':media_id' => $id_media ));
+
+        // Close databse connection
+        $db   = null;
+
+        return $req->fetchAll();
+
+    }
+
+    public static function durationSeries( $id_media, $type ) {
+
+        // Open database connection
+        $db   = init_db();
+
+        if($type==='serie'):
+
+            $req  = $db->prepare( "SELECT SEC_TO_TIME( SUM(time_to_sec(duration))) as 'TotalTime' FROM stream WHERE media_id LIKE :media_id" );
+            $req->execute( array ( ':media_id' => $id_media ));
+
+        endif;
+
+        // Close databse connection
+        $db   = null;
+
+        return $req->fetchAll();
 
     }
 }

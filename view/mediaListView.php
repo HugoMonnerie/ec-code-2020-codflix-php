@@ -16,10 +16,10 @@
 <div class="media-list">
     <?php foreach( $medias as $media ): ?>
 
-        <a class="item" href="index.php?media=<?= $media['id']; ?>">
+        <a class="item" href="index.php?media=<?= $media['id']; ?>&type=<?= $media['type']; ?>">
             <div class="video">
                 <div>
-                    <iframe allowfullscreen="" frameborder="0" src="<?= $media['trailer_url']; ?>" ></iframe>
+                    <iframe src="<?= $media['trailer_url']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="title"><?= $media['title']; ?></div>

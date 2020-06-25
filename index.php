@@ -3,7 +3,7 @@
 require_once( 'controller/homeController.php' );
 require_once( 'controller/loginController.php' );
 require_once( 'controller/signupController.php' );
-require_once('controller/mediaController.php');
+require_once( 'controller/mediaController.php' );
 
 /**************************
 * ----- HANDLE ACTION -----
@@ -35,22 +35,36 @@ if ( isset( $_GET['action'] ) ):
 
   endswitch;
 
-elseif ( isset( $_GET['media'] ) ):
+elseif ( isset( $_GET['media'] ) && isset( $_GET['type'] ) ):
 
-    if ( !empty( $_GET['media'] ) ) mediaSummary($_GET['media']);
-    else mediaPage(null);
+    switch( $_GET['type']):
+
+        case 'film':
+
+            if ( !empty( $_GET['media'] ) ) mediaSummary( $_GET['media'] );
+            else mediaPage(null, $_GET['media'], $_GET['type']);
+
+        break;
+
+        case 'serie':
+
+            if ( !empty( $_GET['media'] ) ) mediaSerie( $_GET['media'], $_GET['type'] );
+            else mediaPage(null, $_GET['media'], $_GET['type']);
+
+        break;
+
+    endswitch;
 
 elseif ( isset( $_GET['title'] ) ):
 
-    if ( !empty( $_GET['title'] ) ) mediaPage($_GET['title']);
-    else mediaPage(null);
+    mediaPage( $_GET['title'], $_GET['media'], $_GET['type']);
 
 else:
 
   $user_id = isset( $_SESSION['user_id'] ) ? $_SESSION['user_id'] : false;
 
   if( $user_id ):
-    mediaPage(null);
+    mediaPage(null, $_GET['media'], $_GET['type']);
   else:
     homePage();
   endif;
