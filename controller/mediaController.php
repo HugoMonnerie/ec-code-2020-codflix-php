@@ -6,30 +6,30 @@ require_once( 'model/media.php' );
 * ----- LOAD HOME PAGE -----
 ***************************/
 
-function mediaPage( $get ) {
+function mediaPage( $getTitle ) {
 
-  $medias = Media::filterMedias( $get );
+  $medias = Media::filterMedias( $getTitle );
 
   require('view/mediaListView.php');
 
 }
 
-function mediaSummary( $get ) {
+function mediaSummary( $getMediaId ) {
 
-    $media = Media::selectMedia( $get );
-    $genre = Media::searchGenre( $get );
+    $media = Media::selectMedia( $getMediaId );
+    $genre = Media::searchGenre( $getMediaId );
 
     require('view/mediaDetails.php');
 
 }
 
-function mediaSerie( $get ) {
+function mediaSerie( $getMediaId, $getType ) {
 
-    $media   = Media::selectMedia( $get );
-    $genre   = Media::searchGenre( $get );
-    $streamsS1 = Media::selectSeriesS1( $get );
-    $streamsS2 = Media::selectSeriesS2( $get );
-    $totalTime = Media::durationSeries( $get );
+    $media   = Media::selectMedia( $getMediaId );
+    $genre   = Media::searchGenre( $getMediaId );
+    $streamsS1 = Media::selectSeriesS1( $getMediaId );
+    $streamsS2 = Media::selectSeriesS2( $getMediaId );
+    $totalTime = Media::durationSeries( $getMediaId, $getType );
 
     require('view/mediaStream.php');
 

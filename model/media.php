@@ -172,13 +172,17 @@ class Media {
 
     }
 
-    public static function durationSeries( $id_media ) {
+    public static function durationSeries( $id_media, $type ) {
 
         // Open database connection
         $db   = init_db();
 
-        $req  = $db->prepare( "SELECT SEC_TO_TIME( SUM(time_to_sec(duration))) as 'TotalTime' FROM stream WHERE media_id LIKE :media_id" );
-        $req->execute( array ( ':media_id' => $id_media ));
+        if($type==='serie'):
+
+            $req  = $db->prepare( "SELECT SEC_TO_TIME( SUM(time_to_sec(duration))) as 'TotalTime' FROM stream WHERE media_id LIKE :media_id" );
+            $req->execute( array ( ':media_id' => $id_media ));
+
+        endif;
 
         // Close databse connection
         $db   = null;
