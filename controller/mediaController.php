@@ -63,4 +63,32 @@ function streamPage( $getStreamId ) {
 
 }
 
+/***********************************
+ * ----- DELETE MEDIA HISTORY -----
+ ***********************************
+ * @param $getMediaId int id stream
+ */
+
+function deleteMediaHistory( $getMediaId ) {
+
+    $media   = Media::deleteMediaHistory( $getMediaId );
+
+    require('view/historyView.php');
+
+}
+
+/*****************************
+ * ----- DELETE HISTORY -----
+ *****************************
+ * @param $getUserId int id user
+ */
+
+function deleteAllHistory( $getUserId ) {
+
+    $history   = Media::deleteAllHistory( $getUserId );
+
+    require('view/historyView.php');
+
+}
+
 

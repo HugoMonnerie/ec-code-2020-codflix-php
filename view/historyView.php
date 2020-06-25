@@ -5,7 +5,8 @@
     </div>
     <div class="d-flex flex-row-reverse">
         <div class="p-2">
-            <form method="post" action="index.php?del=allHistorique">
+            <form method="post" action="index.php?history">
+                <input type="hidden" name="allHistory" value="true" />
                 <button type="submit" class="btn bg-red text-light">Supprimer mon historique</button>
             </form>
         </div>
@@ -22,7 +23,7 @@
                 <div class="title"><?= $media['title']; ?></div>
                 <div class="d-flex justify-content-center">
                     <div class="p-2">
-                        <form method="post" action="index.php?del=oneMedia">
+                            <input type="hidden" name="oneMedia" value="<?= $media[0]; ?>" />
                             <button type="submit" class="btn bg-red text-light">Supprimer l'élément</button>
                         </form>
                     </div>

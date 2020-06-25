@@ -61,7 +61,29 @@ elseif ( isset( $_GET['title'] ) ):
 
 elseif ( isset( $_GET['history'] ) ):
 
-    historyPage( $_SESSION['user_id'] );
+    switch( $_GET['history']):
+
+        case 'allHistory':
+
+            if ( !empty( $_POST ) ) deleteAllHistory( $_SESSION['user_id'] );
+            else historyPage( $_SESSION['user_id'] );
+
+            break;
+
+        case 'oneMedia':
+
+            if ( !empty( $_POST ) ) deleteMediaHistory( $_POST['oneMedia'] );
+            else historyPage( $_SESSION['user_id'] );
+
+            break;
+
+        default:
+            
+            historyPage( $_SESSION['user_id'] );
+
+            break;
+
+        endswitch;
 
 elseif ( isset( $_GET['stream'] ) ):
 
